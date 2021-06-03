@@ -18,5 +18,9 @@ while True:
         server_socket.sendto(json.dumps(db.USERS).encode(),address)
         print("User list sended on ", address)
 
+    if(message.find("connect") != -1):
+        name = message.split()[1]
+        server_socket.sendto(str(address[1]).encode(), address)
+
     if(message == "logout"):
         db.logout(address)
